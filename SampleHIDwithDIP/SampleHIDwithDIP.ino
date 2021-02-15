@@ -13,44 +13,45 @@ char *myTexts[] = {
 };
                     
 bool isSend = true;
+int pinIn=0;
+int pinIny=4;
+int pinOut=2;
 
-void setup()
-{
-   int i;
-   for(i=0; i<=3; i++){
-     pinMode(i, INPUT);
-     digitalWrite(i, HIGH);
-   }
+
+void setup() {
+  // Output
+  pinMode(1, OUTPUT);
+  pinMode(pinOut, OUTPUT);
+  // Input
+  pinMode(pinIn, INPUT);
 }
 
-void loop()
-{
-  if (digitalRead(0)==HIGH && digitalRead(1)==LOW && digitalRead(2)==LOW && digitalRead(3)==LOW)
-    printText(1);
-  else if (digitalRead(0)==LOW && digitalRead(1)==HIGH && digitalRead(2)==LOW && digitalRead(3)==LOW)
-    printText(2);
-  else if (digitalRead(0)==LOW && digitalRead(1)==LOW && digitalRead(2)==HIGH && digitalRead(3)==LOW)
-    printText(3);
-  else if (digitalRead(0)==LOW && digitalRead(1)==LOW && digitalRead(2)==LOW && digitalRead(3)==HIGH)
-    printText(4);
-  else if (digitalRead(0)==HIGH && digitalRead(1)==HIGH && digitalRead(2)==HIGH && digitalRead(3)==HIGH)
-    printText(5);
-  else {
-    printText(0);
+void loop() {
+  if (digitalRead(pinIn)==HIGH) {
+    blink(1);
+//    printText(1);
+  }
+  else if (digitalRead(pinIny)==HIGH) {
+    blink(pinOut);
+  } else {
+//    digitalWrite(1,LOW);
 //    isSend = true;
   }
-  Serial.println(digitalRead(0));
-  Serial.println(digitalRead(1));
-  Serial.println(digitalRead(2));
-  Serial.println(digitalRead(3));
+}
+
+void blink(int x) {
+  digitalWrite(x,HIGH);
+  delay(500);
+  digitalWrite(x,LOW);
+  delay(500);
 }
 
 void printText(int x) {
   DigiKeyboard.sendKeyStroke(0);
   if (isSend) {
-      DigiKeyboard.print(myTexts[x]);
-      DigiKeyboard.sendKeyStroke(KEY_ENTER);
-      DigiKeyboard.delay(KEYSTROKE_DELAY);      
-//      isSend = false;
+    DigiKeyboard.print(myTexts[x]);
+    DigiKeyboard.sendKeyStroke(KEY_ENTER);
+    DigiKeyboard.delay(KEYSTROKE_DELAY);
+    isSend = false;
   }
 }

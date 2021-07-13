@@ -4,15 +4,12 @@
 #define outputPin 1
 
 char *myTexts[] = {
-  "This is string from A00",
-  "This is string from A01", 
-  "This is string from A02",
-  "This is string from A03",
-  "This is string from A04",   
-  "This is string from A05"
+  "AAA",
+  "BBB",
+  "CCC"
 };
 
-int i = 0;
+int i = 0, lenMytexts = 3;
 
 void setup() {
   // Input
@@ -20,20 +17,22 @@ void setup() {
   digitalWrite(inputPin,HIGH);
   // Output
   pinMode(outputPin, OUTPUT);
+  
   blinkIntro();
 }
 
 void loop() {
-  blinkState();
+  digitalWrite(outputPin,HIGH);
+  delay(1000);
   if (digitalRead(inputPin) == 0) {
     DigiKeyboard.sendKeyStroke(0);
     DigiKeyboard.println(myTexts[i]);
     DigiKeyboard.delay(1000);  
   }
- 
-  if (i >= 5) {
+  digitalWrite(outputPin,LOW);
+  delay(250);
+  if (i >= lenMytexts) {
     i = 0;
-    delay(1000);
     blinkIntro();
   }
   else {
@@ -43,18 +42,11 @@ void loop() {
 
 void blinkIntro() {
   int i;
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < 3; i++) {
     digitalWrite(outputPin,HIGH);
-    delay(200);
+    delay(100);
     digitalWrite(outputPin,LOW);
-    delay(200);
+    delay(100);
   } 
-  delay(750);
-}
-
-void blinkState() {
-  digitalWrite(outputPin,HIGH);
   delay(500);
-  digitalWrite(outputPin,LOW);
-  delay(1000);
 }

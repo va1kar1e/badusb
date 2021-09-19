@@ -1,23 +1,37 @@
-# BadUSB
+# Simple BadUSB
 
-Sample BadUSB with Digispark ATTiny85
+Simple BadUSB with Digispark ATTiny85
 
-## Installation
+## How To
 
-1. ติดตั้ง **Arduino IDE**
-2. เปิด **Arduino IDE** ขึ้นมา แล้วไปที่ **File >> Preferences** ในช่อง Additional Board Manager URLs: ให้ copy link นี้ไปวาง >> [http://digistump.com/package_digistump_index.json](http://digistump.com/package_digistump_index.json) แล้วก็กด OK
-3. เข้าไปที่ **Tools >> Board >> Boards Manager** แล้วให้ ติดตั้ง **Digistump AVR Boards by Digistump**
-   ![](Images/2.png)
-4. ไปที่ **Tools >> Board** แล้วเลือก**บอร์ด DigiSpark (Default – 16.5 MHz)**
+1. Install **Arduino IDE** and open it
+2. Install Digispark Driver
+    
+    - **Windows 10** - Download and Install from this [Digistump.Drivers.v1.6.7.zip](Files/Digistump.Drivers.v1.6.7.zip) or [Official Link - Digistump.Drivers.zip](https://github.com/digistump/DigistumpArduino/releases)
+    - **MacOS**
+        - Fix `avr-g++: bad CPU type in executable Error compiling for board Digispark` problem
 
-## [MacOS - Complied Fix] avr-g++: bad CPU type in executable Error compiling for board Digispark
+            ```Bash
+            cd ~/Library/Arduino15/packages/arduino/tools/avr-gcc
+            mv 4.8.1-arduino5 orig.4.8.1
+            ln -s /Applications/Arduino.app/Contents/Java/hardware/tools/avr 4.8.1-arduino5
+            ```
 
-```Bash
-cd ~/Library/Arduino15/packages/arduino/tools/avr-gcc
-mv 4.8.1-arduino5 orig.4.8.1
-ln -s /Applications/Arduino.app/Contents/Java/hardware/tools/avr 4.8.1-arduino5
-```
 
-## Install the Digispark Windows 10 Drivers
+3. Go to `File` >> `Preferences` 
+    
+    Add this url `http://digistump.com/package_digistump_index.json` in **Additional Board Manager URLs**
 
-[Digistump.Drivers.zip](Images/Digistump.Drivers.zip)
+4. Go to `Tools` >> `Board` >> `Boards Manager` then install **Digistump AVR Boards by Digistump**
+
+   ![](Files/sbusb-1.png)
+
+5. Go to `Tools` >> `Board` then select **DigiSpark (Default – 16.5 MHz)**
+6. Let's play
+
+## Architecture
+
+- Digispark Rev3 USB
+
+   ![](Files/sbusb-2.png)
+    From http://fitrox.lnwshop.com/article/84/tutorial-%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99-digispark-kickstarter-attiny85

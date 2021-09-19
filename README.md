@@ -18,15 +18,15 @@ Simple BadUSB with Digispark ATTiny85
             ```
 
 
-3. Go to `File` >> `Preferences` 
+3. Goto `File` → `Preferences`
     
     Add this url `http://digistump.com/package_digistump_index.json` in **Additional Board Manager URLs**
 
-4. Go to `Tools` >> `Board` >> `Boards Manager` then install **Digistump AVR Boards by Digistump**
+4. Goto `Tools` → `Board` → `Boards Manager` then install **Digistump AVR Boards by Digistump**
 
    ![](Files/sbusb-1.png)
 
-5. Go to `Tools` >> `Board` then select **DigiSpark (Default – 16.5 MHz)**
+5. Goto `Tools` → `Board` then select **DigiSpark (Default – 16.5 MHz)**
 6. Let's play
 
 ## Architecture

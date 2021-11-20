@@ -5,9 +5,10 @@
 
 char *myTexts[] = {
     "ABC",
-    "DEF"};
+    "DEF"
+};
 
-int i = 0, lenMytexts = 2;
+int i = 0, lenMytexts = 1;
 bool isSend = true;
 
 void setup()
